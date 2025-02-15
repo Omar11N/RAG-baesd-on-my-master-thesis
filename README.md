@@ -1,6 +1,7 @@
-# Intelligent PDF Q&A System
+# Intelligent PDF Q&A System (RAG)
 
 *An end-to-end system for extracting, processing, and querying PDF documents using state-of-the-art NLP and deep learning techniques.*
+*I have built an api for this RAG SYS, I'll privide it upon request*
 
 ## Overview
 
