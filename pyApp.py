@@ -11,21 +11,17 @@ from sentence_transformers import SentenceTransformer, util
 from spacy.lang.en import English
 import fitz  # PyMuPDF
 
-# Set device
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
-# Initialize spaCy model
 nlp = English()
-nlp.add_pipe("sentencizer")  # Add sentence boundary detector
+nlp.add_pipe("sentencizer")
 
-# Initialize embedding model
 embedding_model = SentenceTransformer(model_name_or_path="all-mpnet-base-v2", device=device)
 
-# Constants
 PDF_PATH = "MC.pdf"
 EMBEDDINGS_SAVE_PATH = "text_chunks_and_embeddings.csv"
-NUM_SENTENCES_PER_CHUNK = 10  # Number of sentences per text chunk
-MIN_TOKEN_LENGTH = 30  # Minimum token length for chunks
+NUM_SENTENCES_PER_CHUNK = 10 
+MIN_TOKEN_LENGTH = 30 
 
 
 def text_formatter(text: str) -> str:
@@ -40,7 +36,7 @@ def open_and_read_pdf(pdf_path: str) -> list:
     doc = fitz.open(pdf_path)
     pages_and_texts = []
     # Adjust page numbers since the PDF might start with preliminary pages
-    page_offset = 11  # Update this based on your PDF structure
+    page_offset = 11  # Update this based on your PDF structure # should be zero if all should be included
 
     for page_number, page in tqdm(enumerate(doc), desc="Reading PDF pages"):
         text = page.get_text()
@@ -195,20 +191,17 @@ def main():
 
 
 if __name__ == "__main__":
-    # Initialize tokenizer and LLM model
     from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
 
     # Model configuration (update as needed)
     model_id = "deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B"
     use_quantization = False
 
-    # Set up quantization configuration if needed
     if use_quantization:
         quantization_config = BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16)
     else:
         quantization_config = None
-
-    # Initialize tokenizer and model
+        
     tokenizer = AutoTokenizer.from_pretrained(model_id)
     llm_model = AutoModelForCausalLM.from_pretrained(
         pretrained_model_name_or_path=model_id,
