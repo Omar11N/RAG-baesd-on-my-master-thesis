@@ -1,6 +1,5 @@
 # Intelligent PDF Q&A System
 
-![Project Banner](https://via.placeholder.com/1200x300.png?text=Intelligent+PDF+%26+A+System)  
 *An end-to-end system for extracting, processing, and querying PDF documents using state-of-the-art NLP and deep learning techniques.*
 
 ## Overview
