@@ -27,10 +27,3 @@ The workflow consists of:
 - **End-to-End Automation:** Automatically saves and reloads embeddings to avoid redundant computation.
 - **Custom Prompt Engineering:** Formats context-rich prompts for a causal language model, enabling nuanced and contextually aware responses.
 
-## Installation
-
-1. **Clone the Repository:**
-
-   ```bash
-   git clone https://github.com/yourusername/your-repo.git
-   cd your-repo
